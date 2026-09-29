@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f5f0" />
+    <meta name="description" content="Classify news and other writing into ten topics with an instant machine-learning prediction." />
+    <title>Smart Content Category Classifier</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/style.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Smart Content Classifier home">
+        <span class="wordmark-mark" aria-hidden="true">S</span>
+        <span>Signal<span class="wordmark-light"> / Classifier</span></span>
+      </a>
+      <div class="header-meta"><span class="status-dot"></span> LOCAL MODEL <span class="meta-divider">/</span> TF-IDF + NAIVE BAYES</div>
+    </header>
+
+    <main class="page-shell">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow">A little clarity in a noisy feed</p>
+          <h1 id="page-title">Smart Content<br /><span>Category Classifier</span></h1>
+          <p class="intro-description">Enter any content and discover its category instantly.</p>
+        </div>
+        <div class="intro-note" aria-label="Ten categories available">
+          <span class="note-number">10</span>
+          <span class="note-copy">topics<br />in the model</span>
+        </div>
+      </section>
+
+      <section class="workbench" aria-label="Classify content">
+        <div class="composer-panel panel">
+          <div class="panel-heading">
+            <div><span class="section-index">01</span><h2>Your content</h2></div>
+            <span class="character-count" id="character-count">0 / 12,000</span>
+          </div>
+          <label class="visually-hidden" for="content-input">Enter news or content here</label>
+          <textarea id="content-input" maxlength="12000" placeholder="Enter news or content here..." spellcheck="true"></textarea>
+          <div class="form-message" id="form-message" role="alert" aria-live="polite"></div>
+          <div class="composer-actions">
+            <button class="button button-secondary" id="clear-button" type="button">Clear</button>
+            <button class="button button-primary" id="classify-button" type="button">
+              <span class="button-label">Classify content</span>
+              <span class="button-arrow" aria-hidden="true">&#8599;</span>
+            </button>
+          </div>
+          <p class="privacy-note">Your text is processed locally by this app. It is not sent to a third-party AI service.</p>
+        </div>
+
+        <aside class="examples-panel panel" aria-labelledby="examples-title">
+          <div class="panel-heading">
+            <div><span class="section-index">TRY</span><h2 id="examples-title">Start with a sample</h2></div>
+          </div>
+          <p class="examples-hint">Pick a line to classify it right away.</p>
+          <div class="example-list">
+            <button class="example-button" type="button" data-example="India won the cricket match."><span class="example-mark mark-sports"></span><span>India won the cricket match.</span><span class="example-arrow" aria-hidden="true">&#8599;</span></button>
+            <button class="example-button" type="button" data-example="A new AI model was launched."><span class="example-mark mark-tech"></span><span>A new AI model was launched.</span><span class="example-arrow" aria-hidden="true">&#8599;</span></button>
+            <button class="example-button" type="button" data-example="The stock market increased today."><span class="example-mark mark-business"></span><span>The stock market increased today.</span><span class="example-arrow" aria-hidden="true">&#8599;</span></button>
+            <button class="example-button" type="button" data-example="A new movie was released this week."><span class="example-mark mark-entertainment"></span><span>A new movie was released this week.</span><span class="example-arrow" aria-hidden="true">&#8599;</span></button>
+          </div>
+        </aside>
+      </section>
+
+      <section class="result-panel panel" id="result-panel" aria-labelledby="result-title" aria-live="polite">
+        <div class="panel-heading result-heading">
+          <div><span class="section-index">02</span><h2 id="result-title">Classification</h2></div>
+          <span class="result-state" id="result-state">AWAITING TEXT</span>
+        </div>
+        <div class="result-content" id="result-content">
+          <div class="empty-result">
+            <span class="empty-mark" aria-hidden="true">?</span>
+            <div><h3>Your result will land here.</h3><p>Add a sentence or article above to see its predicted topic, confidence, and keywords.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="history-section" aria-labelledby="history-title">
+        <div class="history-heading">
+          <div><span class="section-index">03</span><h2 id="history-title">Recent classifications</h2></div>
+          <button class="text-button" id="clear-history-button" type="button" hidden>Clear history</button>
+        </div>
+        <div class="history-table-wrap">
+          <table class="history-table">
+            <thead><tr><th scope="col">CONTENT</th><th scope="col">CATEGORY</th><th scope="col">CONFIDENCE</th><th scope="col">TIME</th></tr></thead>
+            <tbody id="history-body"><tr class="history-empty"><td colspan="4">Your recent predictions will appear here.</td></tr></tbody>
+          </table>
+        </div>
+      </section>
+
+      <footer class="site-footer"><span>SIGNAL / CLASSIFIER</span><span>10 TOPICS <span class="meta-divider">/</span> BUILT FOR CURIOSITY</span></footer>
+    </main>
+  </body>
+</html>
